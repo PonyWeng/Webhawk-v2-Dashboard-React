@@ -8,12 +8,12 @@ import Dropdown from '../dropdown/Dropdown'
 
 import ThemeMenu from '../thememenu/ThemeMenu'
 
-/*<input type="text" placeholder='Search here...' />
-                <i className='bx bx-search'></i>*/
                 
 import user_image from '../../assets/images/tuat.png'
 
 import user_menu from '../../assets/JsonData/user_menus.json'
+import prediction from "../../assets/JsonData/prediction.json";
+
 
 const curr_user = {
     display_name: 'Administrator',
@@ -46,7 +46,9 @@ const Topnav = () => {
     return (
         <div className='topnav'>
            <div className="topnav__search">
-               
+           <input type="text" placeholder='Search here...' />
+                <i className='bx bx-search'></i>
+                
             </div>
             <div className="topnav__right">
                 <div className="topnav__right-item">

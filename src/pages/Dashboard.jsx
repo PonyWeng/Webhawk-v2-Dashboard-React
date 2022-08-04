@@ -10,6 +10,7 @@ import prediction from "../assets/JsonData/prediction.json";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
+
 const chartOptions = {
   options: {
     chart: {
@@ -170,8 +171,8 @@ const Dashboard = () => {
                 <p>{currentItem.return_code}</p>
               </div>
               <div className="desc log">
-                <h3>Log</h3>
-                <p>{currentItem.URL}</p>
+                <h3>Log Record</h3>
+                <p>{currentItem.log_record}</p>
               </div>
             </div>
           ) : null}
