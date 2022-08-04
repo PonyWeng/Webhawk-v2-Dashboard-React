@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { useSelector } from "react-redux";
 import StatusCard from "../components/status-card/StatusCard";
@@ -50,6 +49,8 @@ const Dashboard = () => {
 
   const [currentItem, setCurrentItem] = useState(null);
   const [show, setShow] = useState(false);
+  const [isRenderData, setIsRenderData] = useState(false);
+  const [newData, setNewData] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleButtonShown = (id) => {
@@ -63,10 +64,24 @@ const Dashboard = () => {
       if (prediction[i] !== undefined) {
         let item = prediction[i];
         item.index = prediction.length - i;
+        item.status = orderStatus[item.attack_prediction];
+
         items.push(item);
       }
     }
     return items;
+  };
+  const tableSearch = (val) => {
+    setIsRenderData(false);
+    const data = LastToFirst();
+    let searchData = data;
+    if (val !== "") {
+      searchData = data.filter((x) => x.status === val);
+    }
+    setTimeout(() => {
+      setIsRenderData(true);
+    }, 100);
+    setNewData(searchData);
   };
 
   const renderBody = (item, id) => (
@@ -90,7 +105,9 @@ const Dashboard = () => {
       </td>
     </tr>
   );
-
+  useEffect(() => {
+    tableSearch("");
+  }, []);
   return (
     <div>
       <h2 className="page-header">Dashboard</h2>
@@ -137,13 +154,34 @@ const Dashboard = () => {
             <div className="col-12">
               <div className="card">
                 <div className="card__body">
-                  <Table
-                    limit="10"
-                    headData={customerTableHead}
-                    renderHead={(item, index) => renderHead(item, index)}
-                    bodyData={LastToFirst()}
-                    renderBody={(item, index) => renderBody(item, index)}
-                  />
+                  <div className="form-group mb-4">
+                    <label htmlFor="">Search filter</label>
+                    <select
+                      className="form-control"
+                      name=""
+                      id="myInput"
+                      onChange={(e) => tableSearch(e.target.value)}
+                    >
+                      <option value="">select filter</option>
+
+                      <option value="XSS">XSS</option>
+                      <option value="DirectoryTraversal">
+                        Directory Traversal
+                      </option>
+                      <option value="Normal">Normal</option>
+                      <option value="SqlInjection">Sql Injection</option>
+                    </select>
+                  </div>
+                  {isRenderData ? "true" : "false"}
+                  {isRenderData ? (
+                    <Table
+                      limit="10"
+                      headData={customerTableHead}
+                      renderHead={(item, index) => renderHead(item, index)}
+                      bodyData={newData}
+                      renderBody={(item, index) => renderBody(item, index)}
+                    />
+                  ) : null}
                 </div>
               </div>
             </div>

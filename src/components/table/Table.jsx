@@ -50,23 +50,6 @@ const Table = (props) => {
 
   return (
     <div>
-      <div className="form-group mb-4">
-        <label htmlFor="">Search filter</label>
-        <select
-          className="form-control"
-          name=""
-          id="myInput"
-          onChange={() => tableSearch()}
-        >
-          <option value="">select filter</option>
-
-          <option value="XSS">XSS</option>
-          <option value="DirectoryTraversal">Directory Traversal</option>
-          <option value="Normal">Normal</option>
-          <option value="SqlInjection">Sql Injection</option>
-        </select>
-      </div>
-
       <div className="table-wrapper">
         <table id="myTable">
           {props.headData && props.renderHead ? (
