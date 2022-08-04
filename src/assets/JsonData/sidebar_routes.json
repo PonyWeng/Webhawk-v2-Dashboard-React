@@ -1,0 +1,24 @@
+[
+    {
+        "display_name": "Dashboard",
+        "route": "/",
+        "icon": "bx bx-category-alt"
+    },
+    {
+        "display_name": "Logs",
+        "route": "/Logs",
+        "icon": "bx bx-user-pin"
+    },
+    
+    {
+        "display_name": "Analytics",
+        "route": "/Analytics",
+        "icon": "bx bx-bar-chart-alt"
+    },
+  
+    {
+        "display_name": "Settings",
+        "route": "/Settings",
+        "icon": "bx bx-cog"
+    }
+]

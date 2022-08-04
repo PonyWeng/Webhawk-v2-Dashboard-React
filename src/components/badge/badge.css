@@ -1,0 +1,39 @@
+.badge {
+    padding: 6px 20px;
+    color: var(--txt-white);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    display: block;
+    width: 100%;
+    
+    text-align: center;
+   
+  
+   
+
+    
+   
+}
+
+
+.badge-Normal {
+    background-color: var(--second-color-green);
+    
+  
+}
+
+
+.badge-SqlInjection {
+    background-color: var( --second-color-red);
+}
+
+
+
+.badge-XSS {
+    background-color: var(--second-color-blue); 
+}
+
+
+.badge-DirectoryTraversal {
+    background-color: var(--second-color-orange);    
+}

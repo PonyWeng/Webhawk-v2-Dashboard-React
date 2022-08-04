@@ -1,0 +1,25 @@
+[   
+    
+    {
+        "icon": "bx bx-line-chart",
+        "count": "3850",
+        "title": "Normal                     "
+      
+    },
+    {
+        "icon": "bx bx-line-chart",
+        "count": "51528",
+        "title": "Sql injection"
+    },
+   
+    {
+        "icon": "bx bx-line-chart",
+        "count": "57684",
+        "title":"Directory Traversal"
+    },
+    {
+        "icon": "bx bx-line-chart",
+        "count": "101845",
+        "title": "XSS "
+    }
+]
