@@ -9,7 +9,24 @@ const Table = (props) => {
       : props.bodyData;
 
   const [dataShow, setDataShow] = useState(initDataShow);
-
+  const tableSearch = () => {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[2];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  };
   let pages = 1;
 
   let range = [];
@@ -33,8 +50,25 @@ const Table = (props) => {
 
   return (
     <div>
+      <div className="form-group mb-4">
+        <label htmlFor="">Search filter</label>
+        <select
+          className="form-control"
+          name=""
+          id="myInput"
+          onChange={() => tableSearch()}
+        >
+          <option value="">select filter</option>
+
+          <option value="XSS">XSS</option>
+          <option value="DirectoryTraversal">Directory Traversal</option>
+          <option value="Normal">Normal</option>
+          <option value="SqlInjection">Sql Injection</option>
+        </select>
+      </div>
+
       <div className="table-wrapper">
-        <table>
+        <table id="myTable">
           {props.headData && props.renderHead ? (
             <thead>
               <tr>

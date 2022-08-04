@@ -10,7 +10,6 @@ import prediction from "../assets/JsonData/prediction.json";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-
 const chartOptions = {
   options: {
     chart: {
@@ -62,7 +61,9 @@ const Dashboard = () => {
     const items = [];
     for (var i = prediction.length; i >= 1; i--) {
       if (prediction[i] !== undefined) {
-        items.push(prediction[i]);
+        let item = prediction[i];
+        item.index = prediction.length - i;
+        items.push(item);
       }
     }
     return items;
@@ -70,7 +71,7 @@ const Dashboard = () => {
 
   const renderBody = (item, id) => (
     <tr key={id}>
-      <td>{id + 1}</td>
+      <td>{item.index}</td>
       <td>{item.URL}</td>
       <td>
         <Badge
@@ -130,7 +131,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div>
+        <div className="col-12">
           <h2 className="page-header">LOGS</h2>
           <div className="row">
             <div className="col-12">
