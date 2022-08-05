@@ -1,43 +1,12 @@
-import Chart from "react-apexcharts";
-import ReactDOM from "react-dom";
+import React from "react";
 
-import React, { useState } from "react";
+import Analytics from "../components/Analytics";
 
+const Dashboard = () => {
+  const api = "http://127.0.0.1:8000/predict";
+  //const api = "http://127.0.0.1:3000/prediction_output.json";
 
-const Analytics = () => {
+  return <Analytics api={api} />;
+};
 
-
-  const [chartData] = useState({
-    labels: ["SqlInjection", "XSS", "DirectoryTraversal","Normal"],
-    datasets: [
-      {
-        data: [47, 26, 23, 10],
-        backgroundColor: ["#ff4a6b", "#36A2EB", "#FFCE56", "#4caf50"],
-        hoverBackgroundColor: ["#ff4a6b", "#36A2EB", "#FFCE56", "#4caf50"]
-      }
-    ]
-  });
-
-  const [lightOptions] = useState({
-    plugins: {
-      legend: {
-        labels: {
-          color: "#495057"
-        }
-      }
-    }
-  });
-
-  return (
-    <div className="col-6">
-      <Chart
-        type="doughnut"
-        data={chartData}
-        options={lightOptions}
-        style={{ position: "relative", width: "40%" }}
-      />
-    </div>
-  );
-}
-
-export default Analytics
+export default Dashboard;

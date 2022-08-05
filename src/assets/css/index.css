@@ -728,6 +728,12 @@ p {
   font-weight: normal;
 }
 
+.modal-details .desc span {
+  display: inline-block;
+  width: auto;
+  min-width: 150px;
+}
+
 .modal-details .return-code {
   margin-bottom: 14px;
   padding-bottom: 14px;

@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const Logs = () => {
-  return (
-    <div>
-      <h1>hhhhhhh</h1>
-    </div>
-  )
-}
+import Logs from "../components/Logs";
 
-export default Logs
+const Dashboard = () => {
+  const api = "http://127.0.0.1:8000/predict";
+  // const api = "http://127.0.0.1:3000/prediction_output.json";
+
+  return <Logs api={api} />;
+};
+
+export default Dashboard;
