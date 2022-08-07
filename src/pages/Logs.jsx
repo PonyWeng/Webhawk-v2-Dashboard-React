@@ -1,12 +1,9 @@
 import React from "react";
 
 import Logs from "../components/Logs";
-
+import config from "../config";
 const Dashboard = () => {
-  const api = "http://127.0.0.1:8000/predict";
-  // const api = "http://127.0.0.1:3000/prediction_output.json";
-
-  return <Logs api={api} />;
+  return <Logs api={config.api} />;
 };
 
 export default Dashboard;

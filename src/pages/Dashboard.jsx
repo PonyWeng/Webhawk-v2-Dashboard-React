@@ -2,15 +2,13 @@ import React from "react";
 
 import Analytics from "../components/Analytics";
 import Logs from "../components/Logs";
+import config from "../config";
 
 const Dashboard = () => {
-  const api = "http://127.0.0.1:8000/predict";
-  // const api = "http://127.0.0.1:3000/prediction_output.json";
-
   return (
     <>
-      <Analytics api={api} />
-      <Logs api={api} />
+      <Analytics api={config.api} />
+      <Logs api={config.api} />
     </>
   );
 };
