@@ -32,15 +32,15 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Resource
 
-Google font: https://fonts.google.com/
+- Google font: https://fonts.google.com/
 
-Boxicons: https://boxicons.com/
+- Boxicons: https://boxicons.com/
 
-Images: https://unsplash.com/
+- Images: https://unsplash.com/
 
-Charts: https://www.npmjs.com/package
+- Charts: https://www.npmjs.com/package
 
-Modal: https://www.npmjs.com/package/react-modal
+- Modal: https://www.npmjs.com/package/react-modal
 
 ## Preview
 
