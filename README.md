@@ -59,7 +59,7 @@ description, and return code will be displayed in the table so the admin can tra
 
 ![image](https://user-images.githubusercontent.com/27232943/184015283-fcdb3e9f-5538-4d77-8d82-dd29fe467ba7.png)
 
-When you click on Details button, a pop-up window will be displayed to show the description and return code for the specified URL.
+When you click on Details button, a pop-up window will be displayed to show the description , return code and log record for the specified URL.
 
 ![image](https://user-images.githubusercontent.com/27232943/184015773-3f4b09fd-ca2d-45fc-b139-259971586077.png)
 
