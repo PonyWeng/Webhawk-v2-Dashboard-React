@@ -1,9 +1,8 @@
 import React from "react";
+import Dash from "../components/Dash";
 
-import Logs from "../components/Logs";
-import config from "../config";
-const Dashboard = () => {
-  return <Logs api={config.api} />;
+const Logs = () => {
+  return <Dash analytics={false} logs={true} />;
 };
 
-export default Dashboard;
+export default Logs;

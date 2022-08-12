@@ -1,16 +1,8 @@
 import React from "react";
-
-import Analytics from "../components/Analytics";
-import Logs from "../components/Logs";
-import config from "../config";
+import Dash from "../components/Dash";
 
 const Dashboard = () => {
-  return (
-    <>
-      <Analytics api={config.api} />
-      <Logs api={config.api} />
-    </>
-  );
+  return <Dash analytics={true} logs={true} />;
 };
 
 export default Dashboard;

@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import Table from "../components/table/Table";
+import React, { useState } from "react";
 import Badge from "../components/badge/Badge";
 // import prediction from "../assets/JsonData/prediction.json";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
 
 const customerTableHead = ["index", "URL", "attack prediction", "description"];
-const renderHead = (item, index) => <th key={index}>{item}</th>;
 const orderStatus = {
   0: "Normal",
   1: "SqlInjection",
@@ -16,23 +12,21 @@ const orderStatus = {
   3: "DirectoryTraversal",
 };
 
-const Dashboard = (props) => {
+const Logs = (props) => {
   const [currentItem, setCurrentItem] = useState(null);
   const [show, setShow] = useState(false);
-  const [isRenderData, setIsRenderData] = useState(false);
-  const [newData, setNewData] = useState([]);
-  const [prediction, setPrediction] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleClose = () => setShow(false);
   const handleButtonShown = (id) => {
     setShow(true);
-    const itemObject = prediction.find((obj) => obj.index === id);
+    const itemObject = props.data.find((obj) => obj.index === id);
     console.log(id);
     console.log(itemObject);
 
     setCurrentItem(itemObject);
   };
-  const LastToFirst = (data) => {
+  const ReverseData = (data) => {
     const items = [];
     for (var i = data.length; i >= 1; i--) {
       if (data[i] !== undefined) {
@@ -46,52 +40,20 @@ const Dashboard = (props) => {
     return items;
   };
   const tableSearch = (val, dataOld) => {
-    setIsRenderData(false);
-    const data = LastToFirst(dataOld || prediction);
+    setSearchValue(val);
+  };
+  const tableData = (val = "") => {
+    //
+    // return tableSearch(val, props.data);
+    const data = ReverseData(props.data);
     let searchData = data;
     if (val !== "") {
       searchData = data.filter((x) => x.status === val);
     }
-    setTimeout(() => {
-      setIsRenderData(true);
-    }, 100);
-    setNewData(searchData);
+
+    return searchData;
   };
 
-  const renderBody = (item, id) => (
-    <tr key={id}>
-      <td>{item.index}</td>
-      <td>{item.URL}</td>
-      <td>
-        <Badge
-          type={orderStatus[item.attack_prediction]}
-          content={orderStatus[item.attack_prediction]}
-        />
-      </td>
-
-      <td>
-        <button
-          class="btn table-info-btn"
-          onClick={() => handleButtonShown(item.index)}
-        >
-          Details
-        </button>
-      </td>
-    </tr>
-  );
-  const getData = async () => {
-    try {
-      // http://127.0.0.1:8000/predict
-      axios.get(props.api).then((res) => {
-        console.log(res);
-        setPrediction(res.data);
-        tableSearch("", res.data);
-      });
-    } catch (error) {}
-  };
-  useEffect(() => {
-    getData();
-  }, []);
   return (
     <div>
       <div className="row">
@@ -119,15 +81,39 @@ const Dashboard = (props) => {
                       <option value="SqlInjection">Sql Injection</option>
                     </select>
                   </div>
-                  {isRenderData ? (
-                    <Table
-                      limit="10"
-                      headData={customerTableHead}
-                      renderHead={(item, index) => renderHead(item, index)}
-                      bodyData={newData}
-                      renderBody={(item, index) => renderBody(item, index)}
-                    />
-                  ) : null}
+                  {/* {isRenderData ? ( */}
+                  <div className="table-wrapper">
+                    <table id="myTable" className="table">
+                      <thead>
+                        {customerTableHead.map((item, index) => (
+                          <th key={index}>{item}</th>
+                        ))}
+                      </thead>
+                      <tbody>
+                        {tableData(searchValue).map((item, index) => (
+                          <tr key={index}>
+                            <td>{item.index}</td>
+                            <td>{item.URL}</td>
+                            <td>
+                              <Badge
+                                type={orderStatus[item.attack_prediction]}
+                                content={orderStatus[item.attack_prediction]}
+                              />
+                            </td>
+
+                            <td>
+                              <button
+                                class="btn table-info-btn"
+                                onClick={() => handleButtonShown(item.index)}
+                              >
+                                Details
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -179,4 +165,4 @@ const Dashboard = (props) => {
   );
 };
 
-export default Dashboard;
+export default Logs;

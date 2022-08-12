@@ -2,24 +2,8 @@ import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { useSelector } from "react-redux";
 import StatusCard from "../components/status-card/StatusCard";
-import Table from "../components/table/Table";
-import Badge from "../components/badge/Badge";
-import statusCards from "../assets/JsonData/status-card-data.json";
-// import prediction from "../assets/JsonData/prediction.json";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import axios from "axios";
 
-const customerTableHead = ["index", "URL", "attack prediction", "description"];
-const renderHead = (item, index) => <th key={index}>{item}</th>;
-const orderStatus = {
-  0: "Normal",
-  1: "SqlInjection",
-  2: "XSS",
-  3: "DirectoryTraversal",
-};
-
-const Dashboard = (props) => {
+const Analytics = (props) => {
   const themeReducer = useSelector((state) => state.ThemeReducer.mode);
 
   const [cahrtData, setCahrtData] = useState(null);
@@ -92,19 +76,9 @@ const Dashboard = (props) => {
     setCahrtData({ values, labels });
   };
 
-  const getData = async () => {
-    try {
-      // http://127.0.0.1:8000/predict
-      axios.get(props.api).then((res) => {
-        console.log(res);
-        // setPrediction(res.data);
-        buildAnalyics(res.data);
-      });
-    } catch (error) {}
-  };
   useEffect(() => {
-    getData();
-  }, []);
+    buildAnalyics(props.data);
+  });
   return (
     <div>
       <h2 className="page-header">Analytics</h2>
@@ -173,4 +147,4 @@ const Dashboard = (props) => {
   );
 };
 
-export default Dashboard;
+export default Analytics;

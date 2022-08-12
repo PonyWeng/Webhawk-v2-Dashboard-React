@@ -1,5 +1,4 @@
-[
-  {
+[{
     "attack_prediction": 0,
     "URL": "GET /themes/default/graphics/alerts/success.png HTTP/1.1",
     "description": "there is no attack to be described",
@@ -211,7 +210,7 @@
   },
   {
     "attack_prediction": 2,
-    "URL": "GET /main.php?id=<IMG LOWSRC=\\\"javascript:alert('XSS')\\\"> HTTP/1.1",
+    "URL": "GET /masdasain.php?id=<IMG LOWSRC=\\\"javascript:alert('XSS')\\\"> HTTP/1.1",
     "description": "Detects obfuscated script tags and XML wrapped HTML",
     "return_code": "200",
     "log_record": "244.96.75.42 - - [14/Feb/2011:22:59:15  0000] \"GET /main.php?id=<IMG LOWSRC=\\\"javascript:alert('XSS')\\\"> HTTP/1.1\" 200 3303 \"http://www.jones.info/index.html/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0\"\n"
