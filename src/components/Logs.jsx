@@ -18,11 +18,9 @@ const Logs = (props) => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleClose = () => setShow(false);
-  const handleButtonShown = (id) => {
+  const handleButtonShown = (itemIndex) => {
     setShow(true);
-    const itemObject = props.data.find((obj) => obj.index === id);
-    console.log(id);
-    console.log(itemObject);
+    const itemObject = props.data.find((obj) => obj.index === itemIndex);
 
     setCurrentItem(itemObject);
   };

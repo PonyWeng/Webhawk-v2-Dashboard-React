@@ -2,9 +2,9 @@ import React from "react";
 
 import { Route, Switch } from "react-router-dom";
 
-import Dashboard from "../pages/Dashboard";
-import Logs from "../pages/Logs";
-import Analytics from "../pages/Analytics";
+import Dashboard from "../pages/DashboardPage";
+import Logs from "../pages/LogsPage";
+import Analytics from "../pages/AnalyticsPage";
 const Routes = () => {
   return (
     <Switch>

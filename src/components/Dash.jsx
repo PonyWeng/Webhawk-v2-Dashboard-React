@@ -5,7 +5,7 @@ import Logs from "./Logs";
 import config from "../config";
 import axios from "axios";
 
-const Dasj = (props) => {
+const Dash = (props) => {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
@@ -14,6 +14,7 @@ const Dasj = (props) => {
       });
     } catch (error) {}
   };
+
   useEffect(() => {
     getData();
     setInterval(() => {
@@ -34,4 +35,4 @@ const Dasj = (props) => {
   );
 };
 
-export default Dasj;
+export default Dash;
