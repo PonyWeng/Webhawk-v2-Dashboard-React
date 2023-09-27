@@ -9,7 +9,7 @@
 }
 
 .sidebar__logo {
-    height: 150px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,6 +19,22 @@
     height: 45px;
 }
 .sidebar__logo > span {
+font-size: 1.5rem;
+
+
+}
+
+.sidebar__logo1 {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar__logo1 > img {
+    height: 120px;
+}
+.sidebar__logo1 > span {
 font-size: 1.5rem;
 
 

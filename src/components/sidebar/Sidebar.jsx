@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './sidebar.css'
 import sidebar_items from '../../assets/JsonData/sidebar_routes.json'
-
+import Logo from '../../assets/images/origin_logo.png'
 const SidebarItem = props => {
 
     const active = props.active ? 'active' : ''
@@ -28,7 +28,12 @@ const Sidebar = props => {
     return (
         <div className='sidebar'>
             <div className="sidebar__logo">
-               <span >Rsyslog Web Access</span>
+               <h1 >NIDS Dashboard</h1>
+               
+               {/* <img src={Logo} alt="Logo"/> */}
+            </div>
+            <div className="sidebar__logo1">
+               <img src={Logo} alt="Logo"/>
             </div>
             {
                 sidebar_items.map((item, index) => (

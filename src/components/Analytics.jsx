@@ -27,11 +27,13 @@ const Analytics = (props) => {
         },
       },
       title: {
-        text: "Logs Chart for Normal and attack Prediction",
+        text: "Chart for various Log Classifications",
+        align:"center",
         style: {
-          fontSize: "16px",
+          fontSize: "20px",
           fontWeight: "bold",
           fontFamily: "Roboto",
+          
         },
       },
       labels: cahrtData ? cahrtData.labels : [],
@@ -44,6 +46,7 @@ const Analytics = (props) => {
       SqlInjection: [],
       XSS: [],
       DirectoryTraversal: [],
+      DDoS:[],
     };
     const values = [];
     const labels = [];
@@ -57,6 +60,8 @@ const Analytics = (props) => {
         catgs.XSS.push(data[index]);
       } else if (attackPrediction === 3) {
         catgs.DirectoryTraversal.push(data[index]);
+      } else if (attackPrediction === 4){
+        catgs.DDoS.push(data[index])
       }
     }
     const catgsNumber = {
@@ -64,6 +69,7 @@ const Analytics = (props) => {
       SqlInjection: catgs.SqlInjection.length,
       XSS: catgs.XSS.length,
       DirectoryTraversal: catgs.DirectoryTraversal.length,
+      DDoS: catgs.DDoS.length,
     };
     setCatgsNumber(catgsNumber);
     const catgsNum = Object.entries(catgsNumber);
@@ -81,51 +87,17 @@ const Analytics = (props) => {
   });
   return (
     <div>
-      <h2 className="page-header">Analytics</h2>
+      <h2 className="page-header">Overview</h2>
       <div className="row">
-        <div className="col-6">
-          <div className="row">
-            {[
-              {
-                icon: "bx bx-line-chart",
-                count: catgsNumber.Normal,
-                title: "Normal",
-              },
-              {
-                icon: "bx bx-line-chart",
-                count: catgsNumber.SqlInjection,
-                title: "Sql injection",
-              },
 
-              {
-                icon: "bx bx-line-chart",
-                count: catgsNumber.DirectoryTraversal,
-                title: "Directory Traversal",
-              },
-              {
-                icon: "bx bx-line-chart",
-                count: catgsNumber.XSS,
-                title: "XSS ",
-              },
-            ].map((item, index) => (
-              <div className="col-6" key={index}>
-                <StatusCard
-                  icon={item.icon}
-                  count={item.count}
-                  title={item.title}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="col-6">
+      <div className="col-6">
           <div className="card full-height">
             {/* chart */}
             {cahrtData ? (
               <Chart
                 type="donut"
-                height={300}
-                width={400}
+                height={500}
+                width={600}
                 series={cahrtData.values}
                 options={
                   themeReducer === "theme-mode-dark"
@@ -142,6 +114,47 @@ const Analytics = (props) => {
             ) : null}
           </div>
         </div>
+        <div className="col-6">
+          <div className="row">
+            {[
+              {
+                icon: "bx bx-line-chart",
+                count: catgsNumber.Normal,
+                title: "Benign (Normal)",
+              },
+              {
+                icon: "bx bx-line-chart",
+                count: catgsNumber.SqlInjection,
+                title: "SQL Injection",
+              },
+
+              {
+                icon: "bx bx-line-chart",
+                count: catgsNumber.DirectoryTraversal,
+                title: "Directory Traversal",
+              },
+              {
+                icon: "bx bx-line-chart",
+                count: catgsNumber.XSS,
+                title: "Cross-Site-Scripting(XSS) ",
+              },
+              {
+                icon: "bx bx-line-chart",
+                count: catgsNumber.DDoS,
+                title: "DDoS ",
+              },
+            ].map((item, index) => (
+              <div className="col-6" key={index}>
+                <StatusCard
+                  icon={item.icon}
+                  count={item.count}
+                  title={item.title}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        
       </div>
     </div>
   );

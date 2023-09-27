@@ -1,16 +1,16 @@
 [{
-        "display_name": "Dashboard",
+        "display_name": "Overview",
         "route": "/",
         "icon": "bx bx-category-alt"
     },
     {
-        "display_name": "Logs",
+        "display_name": "Web Logs",
         "route": "/Logs",
         "icon": "bx bx-user-pin"
     },
 
     {
-        "display_name": "Analytics",
+        "display_name": "Statistics ",
         "route": "/Analytics",
         "icon": "bx bx-bar-chart-alt"
     }

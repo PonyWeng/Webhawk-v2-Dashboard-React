@@ -37,3 +37,7 @@
 .badge-DirectoryTraversal {
     background-color: var(--second-color-orange);    
 }
+
+.badge-DDoS {
+    background-color: #6f42c1;    
+}

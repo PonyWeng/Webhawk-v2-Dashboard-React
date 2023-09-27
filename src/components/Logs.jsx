@@ -4,12 +4,13 @@ import Badge from "../components/badge/Badge";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-const customerTableHead = ["index", "URL", "attack prediction", "description"];
+const customerTableHead = ["Number", "Contents", "Prediction", "description"];
 const orderStatus = {
   0: "Normal",
   1: "SqlInjection",
   2: "XSS",
   3: "DirectoryTraversal",
+  4: "DDoS"
 };
 
 const Logs = (props) => {
@@ -33,6 +34,8 @@ const Logs = (props) => {
         item.status = orderStatus[item.attack_prediction];
 
         items.push(item);
+
+        console.log(items)
       }
     }
     return items;
@@ -56,27 +59,28 @@ const Logs = (props) => {
     <div>
       <div className="row">
         <div className="col-12">
-          <h2 className="page-header">LOGS</h2>
+          <h2 className="page-header">Web LOGS</h2>
           <div className="row">
             <div className="col-12">
               <div className="card">
                 <div className="card__body">
                   <div className="form-group mb-4">
-                    <label htmlFor="">Search filter</label>
+                    <label htmlFor="">Search Filter</label>
                     <select
                       className="form-control"
                       name=""
                       id="myInput"
                       onChange={(e) => tableSearch(e.target.value)}
                     >
-                      <option value="">select filter</option>
+                      <option value="">&nbsp;All</option>
 
-                      <option value="XSS">XSS</option>
+                      <option value="XSS">&nbsp;XSS</option>
                       <option value="DirectoryTraversal">
-                        Directory Traversal
+                        &nbsp;Directory Traversal
                       </option>
-                      <option value="Normal">Normal</option>
-                      <option value="SqlInjection">Sql Injection</option>
+                      <option value="Normal">&nbsp;Normal</option>
+                      <option value="SqlInjection">&nbsp;Sql Injection</option>
+                      <option value="DDoS">&nbsp;DDoS</option>
                     </select>
                   </div>
                   {/* {isRenderData ? ( */}
@@ -149,6 +153,10 @@ const Logs = (props) => {
               <div className="desc log">
                 <h3>Log Record</h3>
                 <p>{currentItem.log_record}</p>
+              </div>
+              <div className="desc log">
+                <h3>Detection Source</h3>
+                <p>{currentItem.Source}</p>
               </div>
             </div>
           ) : null}

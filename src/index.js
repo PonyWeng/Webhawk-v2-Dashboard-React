@@ -23,7 +23,7 @@ const store = createStore(
   rootReducer
 )
 
-document.title = 'Rsyslog Access'
+document.title = 'NIDS Weblog Dashboard'
 
 ReactDOM.render(
   <Provider store={store}>
