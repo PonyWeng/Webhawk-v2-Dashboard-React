@@ -158,6 +158,20 @@ const Logs = (props) => {
                 <h3>Detection Source</h3>
                 <p>{currentItem.Source}</p>
               </div>
+              <div className="TxHash">
+                <h3>BlockChain Transaction Hash</h3>
+                <p style={{fontSize:11.5}}>{currentItem.TxHash}</p>
+              </div>
+
+              <div className="ContractsAddress">
+                <h3>(From) Owner Address </h3>
+                <p >{currentItem.Owner_Address}</p>
+              </div>
+              <div className="ContractsAddress">
+                <h3>(To) Contracts Address </h3>
+                <p >{currentItem.Contracts_Address}</p>
+              </div>
+              
             </div>
           ) : null}
         </Modal.Body>
